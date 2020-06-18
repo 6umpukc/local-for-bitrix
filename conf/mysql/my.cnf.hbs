@@ -3,6 +3,10 @@
 skip-name-resolve
 {{/unless}}
 
+{{#if disableMysqlx}}
+mysqlx = 0
+{{/if}}
+
 datadir = {{datadir}}
 port = {{port}}
 bind-address = {{bindAddress}}
@@ -11,6 +15,10 @@ socket = {{socket}}
 {{#if os.windows}}
 console
 {{/if}}
+
+# Older PHP/client compatibility
+character-set-server = utf8mb3
+default_authentication_plugin = mysql_native_password
 
 # Fine Tuning
 performance_schema = off
@@ -26,7 +34,7 @@ innodb_log_file_size = 96M
 sql-mode=""
 innodb_flush_log_at_trx_commit=2
 sync_binlog=0
-innodb_flush_method=O_DIRECT
+#innodb_flush_method=O_DIRECT #not work for mysql8 windows
 transaction-isolation=READ-COMMITTED
 innodb_strict_mode=OFF
 
