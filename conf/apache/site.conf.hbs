@@ -25,8 +25,9 @@
 
     <Proxy fcgi://unused-domain-string-but-required>
       # FIX bitrix
-      ProxySet connectiontimeout=120 timeout=3600
+      ProxySet connectiontimeout=1200 timeout=3600
     </Proxy>
+    ProxyTimeout 1200
 
     # If the php file doesn't exist, disable the proxy handler.
     # This will allow .htaccess rewrite rules to work and
